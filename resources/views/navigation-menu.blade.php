@@ -155,6 +155,10 @@
 
                                 <div class="border-t border-gray-200 dark:border-gray-600"></div>
 
+                                <x-dropdown-link href="{{ route('filament.admin.pages.dashboard') }}">
+                                    {{ __('Dashboard') }}
+                                </x-dropdown-link>
+
                                 <!-- Authentication -->
                                 <form method="POST" action="{{ route('logout') }}" x-data>
                                     @csrf
