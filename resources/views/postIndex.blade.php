@@ -53,6 +53,8 @@
             </article>
         @endforeach
 
+        {{ $posts->links() }}
+
 
       </div>
   </div>

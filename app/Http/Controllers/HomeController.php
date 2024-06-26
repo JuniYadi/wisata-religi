@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
     public function homepage()
     {
-        $posts = Post::paginate(10);
+        $posts = Post::paginate(6);
         return view('welcome', compact('posts'));
     }
 
