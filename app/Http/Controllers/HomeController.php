@@ -49,4 +49,29 @@ class HomeController extends Controller
 
         return back();
     }
+
+    public function search(Request $request)
+    {
+        $q = $request->q;
+        $posts = Post::where('nama', 'like', "%$q%")->paginate(10);
+        $title = "Pencarian Wisata: $q";
+
+        return view('postIndex', compact('posts', 'title'));
+    }
+
+    public function blog()
+    {
+        $posts = Post::where('category', 'blog')->paginate(10);
+        $title = "Wisata Religi";
+
+        return view('postIndex', compact('posts', 'title'));
+    }
+
+    public function news()
+    {
+        $posts = Post::where('category', 'news')->paginate(10);
+        $title = "Informasi Terbaru Terkait Wisata Religi";
+
+        return view('postIndex', compact('posts', 'title'));
+    }
 }

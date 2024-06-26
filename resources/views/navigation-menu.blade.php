@@ -13,6 +13,12 @@
                         <x-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">
                             {{ __('Home') }}
                         </x-nav-link>
+                        <x-nav-link href="{{ route('blog') }}" :active="request()->routeIs('blog')">
+                            {{ __('Blog') }}
+                        </x-nav-link>
+                        <x-nav-link href="{{ route('news') }}" :active="request()->routeIs('news')">
+                            {{ __('News') }}
+                        </x-nav-link>
 
                         <x-nav-link href="{{ route('terms.show') }}" :active="request()->routeIs('terms.show')">
                             {{ __('Terms and Servie') }}
@@ -24,6 +30,22 @@
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ms-6">
+
+                <form method="GET" action="{{ route('search') }}">
+                    <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                            </svg>
+                        </div>
+                        <input type="search" id="default-search" name="q" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Search..."
+                        value="{{ request()->query('q') ?? '' }}"
+                        required />
+                    </div>
+                </form>
+
                 {{-- Dark Mode --}}
                 <button id="theme-toggle" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
                     <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
