@@ -64,6 +64,13 @@ class PostResource extends Resource
                             ->openable()
                             ->image()
                             ->imageEditor(),
+                        // Forms\Components\Select::make('banner_filter')
+                        //     ->options([
+                        //         'grayscale' => 'Grayscale',
+                        //         'brightness' => 'Brightness',
+                        //         'contrast' => 'Contrast',
+                        //     ])
+                        //     ->searchable()->required(),
                         Forms\Components\Select::make('agama')
                             ->options([
                                 'Islam' => 'Islam',
@@ -84,10 +91,6 @@ class PostResource extends Resource
                             ->placeholder('Deskripsi singkat')
                             ->required()
                             ->columnSpanFull(),
-                        Forms\Components\Select::make('user_id')
-                            ->label('Author')
-                            ->options(User::all()->pluck('name', 'id'))
-                            ->searchable()->required(),
                     ])
                     ->columnSpan(1),
 
