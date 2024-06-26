@@ -30,7 +30,7 @@
 
                 <div class="my-2">
                     <a href="{{ route("posts", $post->slug) }}">
-                        <img class="rounded-t-lg fixed-height-image" src="{{ asset('storage/' . $post->banner) }}" alt="" />
+                        <img class="rounded-t-lg" src="{{ asset('storage/' . $post->banner) }}" alt="" />
                     </a>
                 </div>
 
