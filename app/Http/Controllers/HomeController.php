@@ -53,7 +53,7 @@ class HomeController extends Controller
     public function search(Request $request)
     {
         $q = $request->q;
-        $posts = Post::where('nama', 'like', "%$q%")->paginate(10);
+        $posts = Post::where('nama', 'like', "%$q%")->paginate(8);
         $title = "Pencarian Wisata: $q";
 
         return view('postIndex', compact('posts', 'title'));
@@ -61,7 +61,7 @@ class HomeController extends Controller
 
     public function blog()
     {
-        $posts = Post::where('category', 'blog')->paginate(10);
+        $posts = Post::where('category', 'blog')->paginate(8);
         $title = "Wisata Religi";
 
         return view('postIndex', compact('posts', 'title'));
@@ -69,7 +69,7 @@ class HomeController extends Controller
 
     public function news()
     {
-        $posts = Post::where('category', 'news')->paginate(10);
+        $posts = Post::where('category', 'news')->paginate(8);
         $title = "Informasi Terbaru Terkait Wisata Religi";
 
         return view('postIndex', compact('posts', 'title'));
