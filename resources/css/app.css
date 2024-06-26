@@ -7,8 +7,8 @@
 }
 
 .fixed-height-image {
-    height: 200px; /* Example height */
-    width: auto;
-    object-fit: cover; /* This makes the magic happen */
+    height: 200px; /* Example fixed height */
+    width: 100%; /* Make the image fill the width of its container */
+    object-fit: cover; /* Maintain aspect ratio, cropping the image if necessary */
     display: block; /* Remove extra space below the image */
 }
