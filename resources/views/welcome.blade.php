@@ -29,8 +29,7 @@
             <article class="p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
 
                 <div class="my-2">
-                    <a href="#">
-                        {{-- <img class="rounded-t-lg" src="https://flowbite.com/docs/images/blog/image-1.jpg" alt="" /> --}}
+                    <a href="{{ route("posts", $post->slug) }}">
                         <img class="rounded-t-lg" src="{{ asset('storage/' . $post->banner) }}" alt="" />
                     </a>
                 </div>
