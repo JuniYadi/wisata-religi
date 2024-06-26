@@ -21,4 +21,9 @@ class Comment extends Model
     {
         return $this->belongsTo(Post::class);
     }
+
+    public function profilePicture()
+    {
+        return 'https://ui-avatars.com/api/?name=' . $this->nama . '&color=7F9CF5&background=EBF4FF';
+    }
 }
