@@ -68,7 +68,7 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
 
     public function canAccessPanel(Panel $panel): bool
     {
-        return Admin::where('user_id', auth()->id())->exists();
+        return true;
     }
 
     public function profilePicture()
