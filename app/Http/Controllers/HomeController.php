@@ -64,8 +64,6 @@ class HomeController extends Controller
         $posts = Post::where('category', 'blog')->paginate(8);
         $title = "Wisata Religi";
 
-        return $posts->links();
-
         return view('postIndex', compact('posts', 'title'));
     }
 
