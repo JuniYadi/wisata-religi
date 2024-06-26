@@ -32,6 +32,35 @@ URL: https://flowbite.com/docs/components/typography/
             <img src="{{ asset('storage/' . $post->banner) }}" alt="">
           </figure>
 
+          <h3>Informasi Wisata</h3>
+
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Agama</td>
+                        <td>{{ $post->agama }}</td>
+                    </tr>
+                    <tr>
+                        <td>Buka</td>
+                        <td>{{ $post->buka }}</td>
+                    </tr>
+                    <tr>
+                        <td>Biaya</td>
+                        <td>{{ $post->biaya }}</td>
+                    </tr>
+                    <tr>
+                        <td>Alamat</td>
+                        <td>{{ $post->alamat }}</td>
+                    </tr>
+                    <tr>
+                        <td>Google Maps</td>
+                        <td>
+                            <a href="{{ $post->google_maps }}">Lihat di Peta Google Maps</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
           {!! $post->deskripsi !!}
 
 
@@ -41,7 +70,7 @@ URL: https://flowbite.com/docs/components/typography/
                     Discussion ({{ $post->comments->count() }})
                   </h2>
               </div>
-              <form class="mb-6" method="POST" action="{{ route('posts.comment', $post->slug) }}">
+              <form id="form-comment" class="mb-6" method="POST" action="{{ route('posts.comment', $post->slug) }}">
                   <div class="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
                       <label for="comment" class="sr-only">Your comment</label>
                       <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -124,63 +153,36 @@ URL: https://flowbite.com/docs/components/typography/
   </div>
 </main>
 
+@if($related->count() > 0)
+
 <aside aria-label="Related articles" class="py-8 lg:py-24 bg-gray-50 dark:bg-gray-800">
   <div class="px-4 mx-auto max-w-screen-xl">
       <h2 class="mb-8 text-2xl font-bold text-gray-900 dark:text-white">Related articles</h2>
       <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+
+        @foreach($related as $rel)
           <article class="max-w-xs">
-              <a href="#">
-                  <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-1.png" class="mb-5 rounded-lg" alt="Image 1">
+              <a href="{{ route("posts", $rel->slug) }}">
+                  <img src="{{ asset('storage/' . $rel->banner) }}" class="mb-5 rounded-lg" alt="Image 1">
               </a>
               <h2 class="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
-                  <a href="#">Our first office</a>
+                  <a href="{{ route("posts", $rel->slug) }}">{{ $rel->nama }}</a>
               </h2>
-              <p class="mb-4 text-gray-500 dark:text-gray-400">Over the past year, Volosoft has undergone many changes! After months of preparation.</p>
-              <a href="#" class="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline">
-                  Read in 2 minutes
+              <p class="mb-4 text-gray-500 dark:text-gray-400">
+                {{ $rel->summary }}
+              </p>
+              <a href="{{ route("posts", $rel->slug) }}" class="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline">
+                  Read More
               </a>
           </article>
-          <article class="max-w-xs">
-              <a href="#">
-                  <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-2.png" class="mb-5 rounded-lg" alt="Image 2">
-              </a>
-              <h2 class="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
-                  <a href="#">Enterprise design tips</a>
-              </h2>
-              <p class="mb-4  text-gray-500 dark:text-gray-400">Over the past year, Volosoft has undergone many changes! After months of preparation.</p>
-              <a href="#" class="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline">
-                  Read in 12 minutes
-              </a>
-          </article>
-          <article class="max-w-xs">
-              <a href="#">
-                  <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-3.png" class="mb-5 rounded-lg" alt="Image 3">
-              </a>
-              <h2 class="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
-                  <a href="#">We partnered with Google</a>
-              </h2>
-              <p class="mb-4  text-gray-500 dark:text-gray-400">Over the past year, Volosoft has undergone many changes! After months of preparation.</p>
-              <a href="#" class="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline">
-                  Read in 8 minutes
-              </a>
-          </article>
-          <article class="max-w-xs">
-              <a href="#">
-                  <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-4.png" class="mb-5 rounded-lg" alt="Image 4">
-              </a>
-              <h2 class="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
-                  <a href="#">Our first project with React</a>
-              </h2>
-              <p class="mb-4  text-gray-500 dark:text-gray-400">Over the past year, Volosoft has undergone many changes! After months of preparation.</p>
-              <a href="#" class="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline">
-                  Read in 4 minutes
-              </a>
-          </article>
+        @endforeach
       </div>
   </div>
 </aside>
+@endif
 
 
-
+@include('newsletter')
+@include('footer')
 
 </x-app-layout>
