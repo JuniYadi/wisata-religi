@@ -30,15 +30,6 @@ class PostResource extends Resource
                             ->required()
                             ->live()
                             ->afterStateUpdated(function (Forms\Get $get, Forms\Set $set, ?string $operation, ?string $old, ?string $state, ?Model $record) {
-
-                                if ($operation == 'edit' && $record->isPublished()) {
-                                    return;
-                                }
-
-                                if (($get('slug') ?? '') !== Str::slug($old)) {
-                                    return;
-                                }
-
                                 $set('slug', Str::slug($state));
                             }),
                         Forms\Components\TextInput::make('slug')->required()

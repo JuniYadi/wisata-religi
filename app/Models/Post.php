@@ -22,6 +22,7 @@ class Post extends Model
         'summary',
         'agama',
         'banner',
+        'isPublish'
     ];
 
     public function user()
