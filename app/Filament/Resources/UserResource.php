@@ -29,8 +29,6 @@ class UserResource extends Resource
                 Forms\Components\TextInput::make('email')
                     ->email()
                     ->required(),
-                Forms\Components\TextInput::make('phoneNumber')
-                    ->tel(),
             ]);
     }
 
