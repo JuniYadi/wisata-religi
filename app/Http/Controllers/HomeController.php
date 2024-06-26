@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
     public function homepage()
     {
-        $posts = Post::paginate(6);
+        $posts = Post::orderBy('created_at', 'desc')->limit(6)->get();
         return view('welcome', compact('posts'));
     }
 
