@@ -18,10 +18,10 @@ return new class extends Migration
             $table->string('slug')->index();
             $table->string('category')->index();
             $table->string('alamat');
-            $table->string('google_maps');
+            $table->text('google_maps');
             $table->string('biaya');
             $table->string('buka');
-            $table->string('deskripsi');
+            $table->text('deskripsi');
             $table->string('summary');
             $table->string('agama')->index();
             $table->string('banner');
