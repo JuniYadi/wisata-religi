@@ -14,20 +14,12 @@
                             {{ __('Home') }}
                         </x-nav-link>
 
-                    @auth
-                        <x-nav-link href="{{ route('order.index') }}" :active="request()->routeIs('order')">
-                            {{ __('Order') }}
-                        </x-nav-link>
-                    @endauth
-
-                    @guest
                         <x-nav-link href="{{ route('terms.show') }}" :active="request()->routeIs('terms.show')">
                             {{ __('Terms and Servie') }}
                         </x-nav-link>
                         <x-nav-link href="{{ route('policy.show') }}" :active="request()->routeIs('policy.show')">
                             {{ __('Policy and Privacy') }}
                         </x-nav-link>
-                    @endguest
                 </div>
             </div>
 
