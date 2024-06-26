@@ -5,3 +5,10 @@
 [x-cloak] {
     display: none;
 }
+
+.fixed-height-image {
+    height: 200px; /* Example height */
+    width: auto;
+    object-fit: cover; /* This makes the magic happen */
+    display: block; /* Remove extra space below the image */
+}
