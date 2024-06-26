@@ -74,8 +74,8 @@ URL: https://flowbite.com/docs/components/typography/
                   <div class="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
                       <label for="comment" class="sr-only">Your comment</label>
                       <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input type="text" name="nama" class="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 dark:text-white dark:placeholder-gray-400 dark:bg-gray-800" placeholder="Your name" required>
-                        <input type="email" name="email" class="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 dark:text-white dark:placeholder-gray-400 dark:bg-gray-800" placeholder="Your email" required>
+                        <input type="text" name="nama" class="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 dark:text-white dark:placeholder-gray-400 dark:bg-gray-800" placeholder="Your name" value="{{ auth()->user()->name ?? '' }}" required>
+                        <input type="email" name="email" class="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 dark:text-white dark:placeholder-gray-400 dark:bg-gray-800" placeholder="Your email" value="{{ auth()->user()->email ?? '' }}" required>
 
                       <textarea id="comment" name="content" rows="6"
                           class="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
@@ -146,7 +146,6 @@ URL: https://flowbite.com/docs/components/typography/
                     </div>
                 </article>
               @endforeach
-
 
           </section>
       </article>
